@@ -1,0 +1,76 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# HISTOGRAM
+df_swing = pd.read_csv('2008_swing_states.csv')
+df_swing[['state', 'county', 'dem_share']] 
+sns.set()
+_ = plt.hist(df_swing['dem_share'],bins=20)
+_ = plt.xlabel('percent of vote for Obama')
+_ = plt.ylabel('number of counties')
+plt.show() 
+
+# Bee swarm plot
+df.head()
+sns.swarmplot(x='species', y='petal length (cm)', data=df)
+_ = plt.xlabel('species')
+_ = plt.ylabel('petal length (cm)')
+plt.show()
+
+# Empritial culuative distribution function (ECDF)
+import numpy as np
+def ecdf(data):
+    n=len(data)
+    x=np.sort(data)
+    y=np.arange(1,n+1)/n
+    return x, y
+_ = plt.plot(x, y, marker='.', linestyle='none')
+_ = plt.plot(x_set,y_set,marker='.',linestyle='none')
+_ = plt.plot(x_vers,y_vers,marker='.',linestyle='none')
+_ = plt.xlabel('percent of vote for Obama')
+_ = plt.ylabel('ECDF')
+plt.margins(0.02) # Keeps data off 
+plt.show()
+
+# Numerical EDA
+import numpy as np
+np.mean(dem_share_PA)
+np.median(dem_share_PA)
+np.percentile(df_swing['dem_share'],[25,50,75])
+np.var(dem_share_FL)
+np.std(dem_share_FL)
+
+# percentile over ECDF
+import numpy as np
+#create percentiles
+percentiles=np.array([2.5,25,50,75,97.5])
+ptiles_vers=np.percentile(versicolor_petal_length,percentiles)
+# Plot the ECDF
+_ = plt.plot(x_vers, y_vers, '.')
+_ = plt.xlabel('petal length (cm)')
+_ = plt.ylabel('ECDF')
+# Overlay percentiles as red diamonds.
+_ = plt.plot(ptiles_vers, percentiles/100, marker='D', color='red',
+         linestyle='none')
+
+#Box plot
+import matplotlib.pyplot as plt
+import seaborn as sns
+_=sns.boxplot(x='east_west',y='dem_share',data=df_all_states)
+_=plt.xlabel('region')
+_=plt.ylabel('percent of vote for Obama')
+plt.show()
+
+#Scatter plot
+plt.plot(versicolor_petal_length,versicolor_petal_width,marker='.',linestyle='none')
+_=plt.xlabel('length')
+_=plt.ylabel('width')
+plt.show()
+
+#Correlation
+covariance_matrix=np.cov(versicolor_petal_length,versicolor_petal_width)
+petal_cov=covariance_matrix[0,1]
+def pearson_r(x,y):
+    corr_mat=np.corrcoef(x,y)
+    return corr_mat[0,1]
