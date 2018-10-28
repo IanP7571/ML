@@ -2,6 +2,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+df.describe()
+df.info()
+df.corr()
+
 # HISTOGRAM
 df_swing = pd.read_csv('2008_swing_states.csv')
 df_swing[['state', 'county', 'dem_share']] 
